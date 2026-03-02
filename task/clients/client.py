@@ -12,7 +12,7 @@ class DialClient:
     async def stream_completion(self, messages: list[Message]) -> AsyncGenerator[str, None]:
         url = f"https://ai-proxy.lab.epam.com/openai/deployments/{self.model}/chat/completions"
         headers = {
-            "api-key": self.api_key,  # Make sure this is set
+            "api-key": self.api_key, 
             "Content-Type": "application/json"
         }
         payload = {
@@ -36,7 +36,6 @@ class DialClient:
                         chunk = json.loads(data)
                         content = chunk["choices"][0]["delta"].get("content", "")
                         if content:
-                            print("DEBUG: content chunk:", content)
                             yield content
                     except Exception:
                         continue
