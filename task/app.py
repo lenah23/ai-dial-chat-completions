@@ -43,7 +43,7 @@ async def start(stream: bool) -> None:
             print(f"DIAL: {response}")
         
         # 8. Add generated message to history
-        conversation.add_message(Message(role=Role.ASSISTANT, content=response))
+        conversation.add_message(Message(role=Role.AI, content=response))
 
 # Run the async start function with streaming enabled
 if __name__ == "__main__":

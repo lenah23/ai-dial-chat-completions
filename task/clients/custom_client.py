@@ -43,7 +43,7 @@ class CustomDialClient(BaseClient):
         print("Request:", json.dumps(request_data, indent=2))
         print("Response:", json.dumps(resp_json, indent=2))
         print(content)
-        return Message(role=Role.ASSISTANT, content=content)
+        return Message(role=Role.AI, content=content)
 
     async def stream_completion(self, messages: list[Message]) -> Message:
         # 1. Create headers dict
@@ -81,7 +81,7 @@ class CustomDialClient(BaseClient):
                             contents.append(snippet)
         print()  # End of streaming
         full_content = "".join(contents)
-        return Message(role=Role.ASSISTANT, content=full_content)
+        return Message(role=Role.AI, content=full_content)
 
     def _get_content_snippet(self, data: str) -> str:
         # 1. Parse streaming data chunk
